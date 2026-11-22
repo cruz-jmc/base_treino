@@ -1,4 +1,4 @@
-class Docinhos:
+class Docinho:
     def __init__(self, id = None, name = None, sabor = None, feito = False):
         self.id = id
         self.name = name

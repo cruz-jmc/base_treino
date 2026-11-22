@@ -1,13 +1,14 @@
 from database.connection import get_connection
+from entities.docinhos import Docinhos
 
 class DAOEntity:
 
-    def create(self, docinhos):
+    def create(self, docinho):
         # Inserir no banco
         connection = get_connection()
         
         try:
-            cursor = connection.execute("""INSERT INTO docinhos (nome, sabor, feito) VALUES (docinho.nome, docinho.sabor, docinho.feito)""")
+            cursor = connection.execute("""INSERT INTO docinho (nome, sabor, feito) VALUES (docinho.nome, docinho.sabor, docinho.feito)""")
             
             connection.commit()
             return cursor.lastrowid
@@ -22,7 +23,20 @@ class DAOEntity:
         connection = get_connection()
         
         try:
+            cursor = connection.execute("SELECT * FROM docinho")
+            lista = cursor.fetchall
             
+            registros = []
+            
+            for registro in lista:
+                docinho = Docinho()
+                docinho.id = registro[0]
+                docinho.nome = registro[1]
+                docinho.sabor = registro[2]
+                docinho.feito = bool(registro[3])
+                
+                registros.append(docinho)
+            return registros
             
         finally:
             connection.close()

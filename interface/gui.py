@@ -33,5 +33,32 @@ class UI:
                 except ValueError as error:
                     print(f"Erro: {erro}")
                     
-            if (escolha == "2"):
+            elif (escolha == "2"):
+                try:
+                    lista = self.service.find_all
+                    if not lista:
+                        print("Sem registro")
+                        
+                    else:
+                        print("------Lista de registros------")
+                        for i in lista:
+                            if i.closed:
+                                feito = "Nenhum docinho feito"
+                                
+                            else:
+                                feito = "Existem docinhos feitos"
+                                
+                            print(f"nome: {docinho.nome}// sabor: {docinho.sabor}// feito: {docinho.feito}")
+                            
+                except ValueError as error:
+                    print(f"Erro: {error}")
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 

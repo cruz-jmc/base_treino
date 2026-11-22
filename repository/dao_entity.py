@@ -41,17 +41,28 @@ class DAOEntity:
         finally:
             connection.close()
 
-    def find_by_id(self, docinhos_id):
+    def find_by_id(self, docinho_id):
         # Consultar pelo ID
         connection = get_connection()
         
         try:
+            cursor = connection.execute("SELECT * FROM docinho WHERE id =?" (bolo_id,))
+            
+            registro = cursor.fetchone()
+            
+            docinho = Docinho()
+            docinho.id = registro[0]
+            docinho.nome = registro[1]
+            docinho.sabor = registro[2]
+            docinho.feito = bool(registro[3])
+            
+            return docinho
             
             
         finally:
             connection.close()
 
-    def update(self, docinhos):
+    def update(self, docinho):
         # Atualizar
         connection = get_connection()
         
@@ -61,7 +72,7 @@ class DAOEntity:
         finally:
             connection.close()
 
-    def delete(self, docinhos_id):
+    def delete(self, docinho_id):
         # Excluir
         connection = get_connection()
         

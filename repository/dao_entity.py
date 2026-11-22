@@ -2,22 +2,57 @@ from database.connection import get_connection
 
 class DAOEntity:
 
-    def create(self, task):
+    def create(self, docinhos):
         # Inserir no banco
-        pass
+        connection = get_connection()
+        
+        try:
+            cursor = connection.execute("""INSERT INTO docinhos (nome, sabor, feito) VALUES (docinho.nome, docinho.sabor, docinho.feito)""")
+            
+            connection.commit()
+            return cursor.lastrowid
+            
+            
+            
+        finally:
+            connection.close()
 
     def find_all(self):
         # Consultar todas as entidades
-        pass
+        connection = get_connection()
+        
+        try:
+            
+            
+        finally:
+            connection.close()
 
-    def find_by_id(self, task_id):
+    def find_by_id(self, docinhos_id):
         # Consultar pelo ID
-        pass
+        connection = get_connection()
+        
+        try:
+            
+            
+        finally:
+            connection.close()
 
-    def update(self, task):
+    def update(self, docinhos):
         # Atualizar
-        pass
+        connection = get_connection()
+        
+        try:
+            
+            
+        finally:
+            connection.close()
 
-    def delete(self, task_id):
+    def delete(self, docinhos_id):
         # Excluir
-        pass
+        connection = get_connection()
+        
+        try:
+            
+            
+        finally:
+            connection.close()

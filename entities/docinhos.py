@@ -3,4 +3,4 @@ class Docinhos:
         self.id = id
         self.name = name
         self.sabor = sabor
-        self.feito = feito        
+        self.feito = feito

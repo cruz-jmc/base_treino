@@ -35,8 +35,25 @@ class Services:
             return resultado
         
 
-    def update(self, docinto_id, nome, sabor):
-        pass
+    def update(self, docinho_id, nome, sabor):
+        if not docinho_id:
+            raise ValueError("id não informado.")
+        if not nome or not nome.strip():
+            raise ValueError("nome não informado.")
+        if not sabor or not sabor.strip():
+            raise ValueError("sabor não informado.")
 
+        resultado = self.repository.find_by_id(docinho_id)
+        
+        if not resultado:
+            print("Não foi encontrado")
+        
+        docinho.nome = nome.strip()
+        docinho.sabor = sabor.strip()
+        self.repository.update(resultado)
+        return resultado
+        
+            
+            
     def delete(self, docinho_id):
         pass

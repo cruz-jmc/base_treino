@@ -78,7 +78,8 @@ class DAOEntity:
         connection = get_connection()
         
         try:
-            
+            connection.execute("""DELETE FROM docinho WHERE id=?""", (docinho_id))
+            connectio.commit()
             
         finally:
             connection.close()

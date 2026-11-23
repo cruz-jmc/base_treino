@@ -72,7 +72,22 @@ class UI:
                 
                  except ValueError as error:
                      print(f"Erro: {erro}")
-                
+                     
+            elif (escolha == "5"):
+                resposta = int(input("digite o id do docinho para ser deletado: "))
+                try:
+                    resultado = self.service.get(docinho_id)
+                    if not resultado:
+                        print("id não encontrado.")
+                        
+                    self.service.delete(resposta)
+                    print(f"Docinho deletado. id = {resultado}")
+                    
+                except ValueError as error:
+                    print(f"Erro: {erro}")
+                    
+            elif (escolha == "6"):
+                print("Encerrando programa...")
                 
                 
                 

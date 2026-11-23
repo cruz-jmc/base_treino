@@ -64,9 +64,15 @@ class UI:
                     print(f"Erro: {error}")
                     
             elif (escolha == "4"):
-                 
-                    
+                 nome_novo = input("Digite o novo nome: ")
+                 sabor_novo = input("Digite o novo sabor: ")
+                 try:
+                     self.service.update(docinho_id, nome_novo, sabor_novo)
+                     print("Atualizado com sucesso.")
                 
+                 except ValueError as error:
+                     print(f"Erro: {erro}")
+                     
                 
                 
                 

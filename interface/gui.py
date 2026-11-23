@@ -72,8 +72,6 @@ class UI:
                 
                  except ValueError as error:
                      print(f"Erro: {erro}")
-                     
-                
                 
                 
                 

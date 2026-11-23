@@ -11,7 +11,7 @@ class UI:
         # Chamar os métodos do service
         while True:
             
-            print("====================MENU====================")
+            print("====================MENU DE DOCINHOS====================")
             
             print("CADASTRAR -> 1")
             print("LISTAR -> 2")
@@ -53,6 +53,19 @@ class UI:
                 except ValueError as error:
                     print(f"Erro: {error}")
                 
+            elif (escolha == "3"):
+                respota = int(input("Digite o id do docinho a ser procurado: "))
+                try:
+                    resultado = self.services.get(resposta)
+                    if not resultado:
+                        print("Docinho não encontrado.")
+                    print(f"id: {resultado.id}// nome: {docinho.nome}// sabor: {docinho.sabor}// feito: {docinho.feito}")
+                except ValueError as error:
+                    print(f"Erro: {error}")
+                    
+            elif (escolha == "4"):
+                 
+                    
                 
                 
                 

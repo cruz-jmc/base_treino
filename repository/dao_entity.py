@@ -1,5 +1,5 @@
 from database.connection import get_connection
-from entities.docinhos import Docinhos
+from entities.docinho import Docinho
 
 class DAOEntity:
 
@@ -8,7 +8,7 @@ class DAOEntity:
         connection = get_connection()
         
         try:
-            cursor = connection.execute("""INSERT INTO docinho (nome, sabor, feito) VALUES (docinho.nome, docinho.sabor, docinho.feito)""")
+            cursor = connection.execute("""INSERT INTO docinho (nome, sabor, feito) VALUES (?, ?, ?)""", (docinho.nome, docinho.sabor, docinho.feito))
             
             connection.commit()
             return cursor.lastrowid
@@ -24,7 +24,7 @@ class DAOEntity:
         
         try:
             cursor = connection.execute("SELECT * FROM docinho")
-            lista = cursor.fetchall
+            lista = cursor.fetchall()
             
             registros = []
             
@@ -46,9 +46,11 @@ class DAOEntity:
         connection = get_connection()
         
         try:
-            cursor = connection.execute("SELECT * FROM docinho WHERE id =?" (bolo_id,))
+            cursor = connection.execute("SELECT * FROM docinho WHERE id =?", (docinho_id,))
             
             registro = cursor.fetchone()
+            if not registro:
+                return None
             
             docinho = Docinho()
             docinho.id = registro[0]
@@ -78,8 +80,8 @@ class DAOEntity:
         connection = get_connection()
         
         try:
-            connection.execute("""DELETE FROM docinho WHERE id=?""", (docinho_id))
-            connectio.commit()
+            connection.execute("""DELETE FROM docinho WHERE id=?""", (docinho_id,))
+            connection.commit()
             
         finally:
             connection.close()

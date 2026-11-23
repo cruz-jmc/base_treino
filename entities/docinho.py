@@ -1,6 +1,6 @@
 class Docinho:
-    def __init__(self, id = None, name = None, sabor = None, feito = False):
+    def __init__(self, id = None, nome = None, sabor = None, feito = False):
         self.id = id
-        self.name = name
+        self.nome = nome
         self.sabor = sabor
         self.feito = feito

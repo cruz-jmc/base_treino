@@ -1,5 +1,5 @@
 from repository.dao_entity import DAOEntity
-from entities.docinhos import Docinhos
+from entities.docinho import Docinho
 
 class Services:
 
@@ -11,16 +11,16 @@ class Services:
         # Criar entidade
         # Solicitar persistência
         if not nome or not nome.strip():
-            reaise ValueError("Erro")
+            raise ValueError("Erro")
             
         if not sabor or not sabor.strip():
             raise ValueError("Erro")
         
-        docinho = Docinhos()
+        docinho = Docinho()
         docinho.nome = nome.strip()
         docinho.sabor = sabor.strip()
         docinho.feito = False
-        docinho.id = self.repository.create(bolo)
+        docinho.id = self.repository.create(docinho)
         return docinho
         
 
@@ -47,9 +47,10 @@ class Services:
         
         if not resultado:
             print("Não foi encontrado")
+            return None
         
-        docinho.nome = nome.strip()
-        docinho.sabor = sabor.strip()
+        resultado.nome = nome.strip()
+        resultado.sabor = sabor.strip()
         self.repository.update(resultado)
         return resultado
         

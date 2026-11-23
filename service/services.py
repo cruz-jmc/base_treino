@@ -56,4 +56,12 @@ class Services:
             
             
     def delete(self, docinho_id):
-        pass
+        if not docinho_id:
+            raise ValueError("id não encontrado.")
+        
+        resultado = self.repository.find_by_id(docinho_id)
+        if not resultado:
+            print("Não foi encontrado")
+        else:
+            self.repository.delete(docinho_id)
+            return resultado

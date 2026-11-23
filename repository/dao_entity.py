@@ -67,7 +67,8 @@ class DAOEntity:
         connection = get_connection()
         
         try:
-            
+            connection.execute("""UPDATE docinho SET nome =?, sabor=?, feito=? WHERE id=?""", (docinho.nome, docinho.sabor, docinho.feito, docinho.id))
+            connection.commit()            
             
         finally:
             connection.close()
